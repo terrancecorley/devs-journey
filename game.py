@@ -122,7 +122,7 @@ zonemap = {
   },
   'a2': {
     ZONENAME: 'Town Hall',
-    DESCRIPTION: 'description',
+    DESCRIPTION: 'You enter the Heroes Town Hall.',
     EXAMINATION: 'examine',
     SOLVED: False,
     UP: '',
