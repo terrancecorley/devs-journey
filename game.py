@@ -14,10 +14,12 @@ screen_width = 100
 class player:
   def __init__(self):
     self.name = ''
+    self.job = ''
     self.hp = 0
     self.mp = 0
     self.status_effects = []
     self.location = 'start'
+    self.game_over = False
 
 myPlayer = player()
 
@@ -25,7 +27,7 @@ myPlayer = player()
 def title_screen_selections():
   option = input('> ')
   if option.lower() == ('play'):
-    start_game() #placeholder func
+    setup_game() 
   elif option.lower() == ('help'):
     help_menu()
   elif option.lower() == ('quit'):
@@ -34,7 +36,7 @@ def title_screen_selections():
     print('Please enter a valid command.')
     option = input('> ')  
     if option.lower() == ('play'):
-      start_game() #placeholder func
+      setup_game() 
     elif option.lower() == ('help'):
       help_menu()
     elif option.lower() == ('quit'):
@@ -325,5 +327,88 @@ def player_examine(action):
     print('You can trigger a puzzle here.')
 
 #### Game Functionality ####
-def start_game():
-  return
+
+def main_game_loop():
+  while myPlayer.game_over is False:
+    prompt()
+    # here handle if puzzles solved, boss defeated, explored everything
+
+def setup_game():
+  os.system('clear')
+
+  #### NAME COLLECTING ####
+  question1 = 'Hello, what\'s your name?\n'
+  for character in question1:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.05)
+  player_name = input('> ')
+  myPlayer.name = player_name
+
+  #### JOB HANDLING ####
+  question2 = 'What role would you like to play?\n'
+  question2_added = '(You can play as a warrior, mage, or priest.)\n'
+  for character in question2:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.10)
+  player_job = input('> ')
+  valid_jobs = ['warrior', 'mage', 'priest']
+  if player_job.lower() in valid_jobs:
+    myPlayer.job = player_job
+    print('You are now a ' + player_job + '!\n')
+  else:
+    while player_job.lower not in valid_jobs:
+      player_job = input('> ')
+      if player_job.lower() in valid_jobs:
+        myPlayer.job = player_job
+        print('You are now a ' + player_job + '!\n')
+  
+  #### PLAYER STATS ####
+  if myPlayer.job is 'warrior':
+    self.hp = 120
+    self.mp = 20
+  elif myPlayer.job is 'mage':
+    self.hp = 40
+    self.mp = 120
+  elif myPlayer.job is 'priest':
+    self.hp = 60
+    self.mp = 60
+
+  #### INTRODUCTION #### 
+  question3 = 'Welcome, ' + player_name + ' the ' + player_job + '.\n'
+  for character in question3:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.05)
+  player_name = input('> ')
+  myPlayer.name = player_name
+
+  speech1 = 'Welcome to this fantasy world!'
+  speech2 = 'I hope it greets you well!'
+  speech3 = 'Just make sure you don\'t get too lost...'
+  speech4 = 'Hehehehe...'
+  for character in speech1:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.03)
+  for character in speech2:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.03)
+  for character in speech3:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.1)
+  for character in speech4:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.2)
+  
+  os.system('clear')
+  print('########################')
+  print('#   Let\'s start now!  #')
+  print('########################')
+  
+
+title_screen()
