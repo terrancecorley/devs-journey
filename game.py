@@ -243,7 +243,7 @@ zonemap = {
   'd2': {
     ZONENAME: '',
     DESCRIPTION: 'You have fallen into a wormhole!',
-    EXAMINATION: 'nope, still in the hole...',
+    EXAMINATION: 'nope, still in the hole...still falling...',
     SOLVED: False,
     UP: 'c2',
     DOWN: '',
