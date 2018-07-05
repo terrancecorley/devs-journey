@@ -18,7 +18,7 @@ class player:
     self.hp = 0
     self.mp = 0
     self.status_effects = []
-    self.location = 'start'
+    self.location = 'b2'
     self.game_over = False
 
 myPlayer = player()
@@ -284,19 +284,16 @@ def prompt():
   print('\n' + '============================')
   print('What would you like to do?')
   action = input('> ')
-  acceptable_actions = [
-    'move', 'go', 'travel', 'walk', 'quit',
-    'quit', 'examine', 'inspect', 'interact',
-    'look'
+  acceptable_actions = [ 'move', 'go', 'travel', 'walk', 'examine', 'inspect', 'interact', 'look', 'quit'
   ]
   while action.lower() not in acceptable_actions:
     print('Unknown action, try again.\n')
     action = input('> ')
   if action.lower() == 'quit':
     sys.exit()
-  elif action.lower() == ['move', 'go', 'travel', 'walk']:
+  elif action.lower() in ['move', 'go', 'travel', 'walk']:
     player_move(action.lower())
-  elif action.lower() == ['examine', 'inspect', 'interact', 'look']:
+  elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
     player_examine(action.lower())
 
 def player_move(myAction):
@@ -351,7 +348,11 @@ def setup_game():
   for character in question2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.10)
+    time.sleep(0.05)
+  for character in question2_added:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    time.sleep(0.05)
   player_job = input('> ')
   valid_jobs = ['warrior', 'mage', 'priest']
   if player_job.lower() in valid_jobs:
@@ -380,35 +381,35 @@ def setup_game():
   for character in question3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.05)
-  player_name = input('> ')
+    time.sleep(0.075)
   myPlayer.name = player_name
 
-  speech1 = 'Welcome to this fantasy world!'
-  speech2 = 'I hope it greets you well!'
-  speech3 = 'Just make sure you don\'t get too lost...'
-  speech4 = 'Hehehehe...'
+  speech1 = 'Welcome to this fantasy world!\n'
+  speech2 = 'I hope it greets you well!\n'
+  speech3 = 'Just make sure you don\'t get too lost...\n'
+  speech4 = 'Hehehehe...\n'
   for character in speech1:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.03)
+    time.sleep(0.065)
   for character in speech2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.03)
+    time.sleep(0.065)
   for character in speech3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.1)
+    time.sleep(0.09)
   for character in speech4:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.2)
+    time.sleep(0.25)
   
   os.system('clear')
   print('########################')
   print('#   Let\'s start now!  #')
   print('########################')
+  main_game_loop()
   
 
 title_screen()
