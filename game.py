@@ -57,9 +57,9 @@ def help_menu():
   print('###############################')
   print('  # Welcome to Dev\'s Journey  ')
   print('###############################')
-  print('- Use up, down, left, right to move.')
+  print('- Use commands up, down, left, right to move.')
   print('- Type your commands to execute them.')
-  print('- Use "look" to inspect something.')
+  print('- Use command "look" to inspect something.')
   print('- Good luck and have fun!')
   title_screen_selections()
 
@@ -99,14 +99,14 @@ solved_places = {
   'b2': False,
   'b3': False,
   'b4': False,
-  'c1': False,
-  'c2': False,
-  'c3': False,
-  'c4': False,
-  'd1': False,
-  'd2': False,
-  'd3': False,
-  'd4': False,
+  # 'c1': False,
+  # 'c2': False,
+  # 'c3': False,
+  # 'c4': False,
+  # 'd1': False,
+  # 'd2': False,
+  # 'd3': False,
+  # 'd4': False,
 }
 
 zonemap = {
@@ -156,7 +156,7 @@ zonemap = {
     EXAMINATION: 'examine',
     SOLVED: False,
     UP: 'a1',
-    DOWN: 'c1',
+    DOWN: '',
     LEFT: '',
     RIGHT: 'b2',
   },
@@ -166,7 +166,7 @@ zonemap = {
     EXAMINATION: 'Your home looks the same - nothing has changed.',
     SOLVED: False,
     UP: 'a2',
-    DOWN: 'c2',
+    DOWN: '',
     LEFT: 'b1',
     RIGHT: 'b3',
   },
@@ -176,7 +176,7 @@ zonemap = {
     EXAMINATION: 'examine',
     SOLVED: False,
     UP: 'a3',
-    DOWN: 'c3',
+    DOWN: '',
     LEFT: 'b2',
     RIGHT: 'b4',
   },
@@ -186,96 +186,97 @@ zonemap = {
     EXAMINATION: 'examine',
     SOLVED: False,
     UP: 'a4',
-    DOWN: 'c4',
+    DOWN: '',
     LEFT: 'b3',
     RIGHT: '',
   },
-  'c1': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'b1',
-    DOWN: 'd1',
-    LEFT: '',
-    RIGHT: 'c2',
-  },
-  'c2': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'b2',
-    DOWN: 'd2',
-    LEFT: 'c1',
-    RIGHT: 'c3',
-  },
-  'c3': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'b3',
-    DOWN: 'd3',
-    LEFT: 'c2',
-    RIGHT: 'c4',
-  },
-  'c4': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'b4',
-    DOWN: 'd4',
-    LEFT: 'c3',
-    RIGHT: '',
-  },
-  'd1': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'c1',
-    DOWN: '',
-    LEFT: '',
-    RIGHT: 'd2',
-  },
-  'd2': {
-    ZONENAME: '',
-    DESCRIPTION: 'You have fallen into a wormhole!',
-    EXAMINATION: 'nope, still in the hole...still falling...',
-    SOLVED: False,
-    UP: 'c2',
-    DOWN: '',
-    LEFT: 'd1',
-    RIGHT: 'd3',
-  },
-  'd3': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'c3',
-    DOWN: '',
-    LEFT: 'd2',
-    RIGHT: 'd3',
-  },
-  'd4': {
-    ZONENAME: '',
-    DESCRIPTION: 'description',
-    EXAMINATION: 'examine',
-    SOLVED: False,
-    UP: 'c4',
-    DOWN: '',
-    LEFT: 'd3',
-    RIGHT: '',
-  },
 }
+#   'c1': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'b1',
+#     DOWN: 'd1',
+#     LEFT: '',
+#     RIGHT: 'c2',
+#   },
+#   'c2': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'b2',
+#     DOWN: 'd2',
+#     LEFT: 'c1',
+#     RIGHT: 'c3',
+#   },
+#   'c3': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'b3',
+#     DOWN: 'd3',
+#     LEFT: 'c2',
+#     RIGHT: 'c4',
+#   },
+#   'c4': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'b4',
+#     DOWN: 'd4',
+#     LEFT: 'c3',
+#     RIGHT: '',
+#   },
+#   'd1': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'c1',
+#     DOWN: '',
+#     LEFT: '',
+#     RIGHT: 'd2',
+#   },
+#   'd2': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'You have fallen into a wormhole!',
+#     EXAMINATION: 'nope, still in the hole...still falling...',
+#     SOLVED: False,
+#     UP: 'c2',
+#     DOWN: '',
+#     LEFT: 'd1',
+#     RIGHT: 'd3',
+#   },
+#   'd3': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'c3',
+#     DOWN: '',
+#     LEFT: 'd2',
+#     RIGHT: 'd3',
+#   },
+#   'd4': {
+#     ZONENAME: '',
+#     DESCRIPTION: 'description',
+#     EXAMINATION: 'examine',
+#     SOLVED: False,
+#     UP: 'c4',
+#     DOWN: '',
+#     LEFT: 'd3',
+#     RIGHT: '',
+#   },
+# }
 
 #### GAME INTERACTIVITY ####
 def print_location():
   print('\n' + ('#' * (4 + len(myPlayer.location))))
-  print('# ' + myPlayer.location.upper() + ' #')
+  print('# ' + zonemap[myPlayer.location][ZONENAME].upper() + ' #')
   print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
   print('\n' + ('#' * (4 + len(myPlayer.location))))
 
@@ -284,32 +285,46 @@ def prompt():
   print('\n' + '============================')
   print('What would you like to do?')
   action = input('> ')
-  acceptable_actions = [ 'move', 'go', 'travel', 'walk', 'examine', 'inspect', 'interact', 'look', 'quit'
+  acceptable_actions = [ 'move', 'go', 'travel', 'walk', 'examine', 'inspect', 'interact', 'look', 'quit', 'exit', 'list', 'options'
   ]
   while action.lower() not in acceptable_actions:
-    print('Unknown action, try again.\n')
+    print('Unknown action, type "list" to see available actions.\n')
     action = input('> ')
-  if action.lower() == 'quit':
+  if action.lower() in ['quit', 'exit']:
     sys.exit()
   elif action.lower() in ['move', 'go', 'travel', 'walk']:
     player_move(action.lower())
   elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
     player_examine(action.lower())
+  elif action.lower() in ['list', 'options']:
+    player_options(action.lower())
 
 def player_move(myAction):
   ask = 'Where would you like to move to?\n'
   dest = input(ask)
   if dest in ['up', 'north']:
     destination = zonemap[myPlayer.location][UP]
+    if destination == '':
+      input('That door does not exist, try again.')
+      player_move('move')
     movement_handler(destination)
   elif dest in ['down', 'south']:
     destination = zonemap[myPlayer.location][DOWN]
+    if destination == '':
+      input('That door does not exist, try again.')
+      player_move('move')
     movement_handler(destination)
   elif dest in ['left', 'west']:
     destination = zonemap[myPlayer.location][LEFT]
+    if destination == '':
+      input('That door does not exist, try again.')
+      player_move('move')
     movement_handler(destination)
   elif dest in ['right', 'east']:
     destination = zonemap[myPlayer.location][RIGHT]
+    if destination == '':
+      input('That door does not exist, try again.')
+      player_move('move')
     movement_handler(destination)
 
 def movement_handler(destination):
@@ -319,9 +334,13 @@ def movement_handler(destination):
 
 def player_examine(action):
   if zonemap[myPlayer.location][SOLVED]:
-    print('You have alread exhausted this zone.')
+    print('* A mysterious voice on the company loudspeaker yells *\nYou have already been through this door!! Why on earth would you ever want to go back?! Fool!!')
   else:
     print('You can trigger a puzzle here.')
+
+def player_options(action):
+  os.system('clear')
+  print('These commands are available: "move", "examine", "quit"')
 
 #### Game Functionality ####
 
@@ -338,23 +357,23 @@ def setup_game():
   for character in question1:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.05)
+    # time.sleep(0.05)
   player_name = input('> ')
   myPlayer.name = player_name
 
   #### JOB HANDLING ####
   question2 = 'What role would you like to play?\n'
-  question2_added = '(You can play as a warrior, mage, or priest.)\n'
+  question2_added = '(You can play as a front-end developer, back-end developer, or web designer.)\n'
   for character in question2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.05)
+    # time.sleep(0.05)
   for character in question2_added:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.05)
+    # time.sleep(0.05)
   player_job = input('> ')
-  valid_jobs = ['warrior', 'mage', 'priest']
+  valid_jobs = ['front-end developer', 'back-end developer', 'web designer']
   if player_job.lower() in valid_jobs:
     myPlayer.job = player_job
     print('You are now a ' + player_job + '!\n')
@@ -366,13 +385,13 @@ def setup_game():
         print('You are now a ' + player_job + '!\n')
   
   #### PLAYER STATS ####
-  if myPlayer.job is 'warrior':
+  if myPlayer.job is 'front-end developer':
     self.hp = 120
     self.mp = 20
-  elif myPlayer.job is 'mage':
+  elif myPlayer.job is 'back-end developer':
     self.hp = 40
     self.mp = 120
-  elif myPlayer.job is 'priest':
+  elif myPlayer.job is 'web designer':
     self.hp = 60
     self.mp = 60
 
@@ -381,7 +400,7 @@ def setup_game():
   for character in question3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.075)
+    # time.sleep(0.05)
   myPlayer.name = player_name
 
   speech1 = 'Welcome to this fantasy world!\n'
@@ -391,19 +410,19 @@ def setup_game():
   for character in speech1:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.065)
+    # time.sleep(0.05)
   for character in speech2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.065)
+    # time.sleep(0.05)
   for character in speech3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.09)
+    # time.sleep(0.05)
   for character in speech4:
     sys.stdout.write(character)
     sys.stdout.flush()
-    time.sleep(0.25)
+    # time.sleep(0.25)
   
   os.system('clear')
   print('########################')
