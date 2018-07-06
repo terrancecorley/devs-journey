@@ -210,32 +210,29 @@ def prompt():
   elif action.lower() in ['list', 'options']:
     player_options(action.lower())
 
-def player_move(myAction):
+def player_move_invalid(destination):
+  if destination == '':
+    input('That door does not exist, try again.')
+    player_move('move')
+
+def player_move(my_action):
   ask = 'Where would you like to move to?\n'
   dest = input(ask)
   if dest in ['up', 'north']:
     destination = zonemap[myPlayer.location][UP]
-    if destination == '':
-      input('That door does not exist, try again.')
-      player_move('move')
+    player_move_invalid(destination)
     movement_handler(destination)
   elif dest in ['down', 'south']:
     destination = zonemap[myPlayer.location][DOWN]
-    if destination == '':
-      input('That door does not exist, try again.')
-      player_move('move')
+    player_move_invalid(destination)
     movement_handler(destination)
   elif dest in ['left', 'west']:
     destination = zonemap[myPlayer.location][LEFT]
-    if destination == '':
-      input('That door does not exist, try again.')
-      player_move('move')
+    player_move_invalid(destination)
     movement_handler(destination)
   elif dest in ['right', 'east']:
     destination = zonemap[myPlayer.location][RIGHT]
-    if destination == '':
-      input('That door does not exist, try again.')
-      player_move('move')
+    player_move_invalid(destination)
     movement_handler(destination)
 
 def movement_handler(destination):
@@ -255,6 +252,15 @@ def player_options(action):
   print('These commands are available: "move", "examine", "quit"')
 
 #### Game Functionality ####
+def text_speech(text):
+  for character in text:
+    sys.stdout.write(character)
+    sys.stdout.flush()
+    # time.sleep(0.03)
+
+def enter_to_continue():
+  input('> Press "Enter" to continue')
+  os.system('clear')
 
 def main_game_loop():
   while myPlayer.game_over is False:
@@ -266,35 +272,24 @@ def setup_game():
 
   #### NAME COLLECTING ####
   question1 = 'Hello, what\'s your name?\n'
-  for character in question1:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
+  text_speech(question1)
   player_name = input('> ')
   myPlayer.name = player_name
 
   #### JOB HANDLING ####
   question2 = 'What role would you like to play?\n'
   question2_added = '(You can play as a front-end developer, back-end developer, or web designer.)\n'
-  for character in question2:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
-  for character in question2_added:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
+  text_speech(question2)
+  text_speech(question2_added)
   player_job = input('> ')
   valid_jobs = ['front-end developer', 'back-end developer', 'web designer']
   if player_job.lower() in valid_jobs:
     myPlayer.job = player_job
-    print('You are now a ' + player_job + '!\n')
   else:
     while player_job.lower not in valid_jobs:
       player_job = input('> ')
       if player_job.lower() in valid_jobs:
         myPlayer.job = player_job
-        print('You are now a ' + player_job + '!\n')
   
   #### PLAYER STATS ####
   if myPlayer.job is 'front-end developer':
@@ -308,35 +303,30 @@ def setup_game():
     self.mp = 60
 
   #### INTRODUCTION #### 
-  question3 = 'Welcome, ' + player_name + ' the ' + player_job + '.\n'
-  for character in question3:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
   myPlayer.name = player_name
 
-  speech1 = 'Welcome to this fantasy world!\n'
-  speech2 = 'I hope it greets you well!\n'
-  speech3 = 'Just make sure you don\'t get too lost...\n'
-  speech4 = 'Hehehehe...\n'
-  for character in speech1:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
-  for character in speech2:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
-  for character in speech3:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.03)
-  for character in speech4:
-    sys.stdout.write(character)
-    sys.stdout.flush()
-    time.sleep(0.2)
+  speech1 = 'HR Lady: Welcome ' + player_name + '!\n'
+  speech2 = 'We are really excited to have you interview with us today at Noogle!\n'
+  speech3 = 'So just to recap, you will be having 8 interviews today and they will all be taking place on the 11th floor.\n'
+  speech4 = 'If you will just follow me to the elevator we can get you started!\n' 
+  speech5 = '#### Noogle 11th Floor ####\n'
+  speech6 = 'Here we are!\n'
+  speech7 = 'Okay, step on out now and get to it! Try not to get too lost now...'
+  speech8 = 'Hehehehe...\n'
   
+
   os.system('clear')
+  text_speech(speech1)
+  text_speech(speech2)
+  text_speech(speech3)
+  text_speech(speech4)
+  enter_to_continue()
+  text_speech(speech5)
+  text_speech(speech6)
+  text_speech(speech7)
+  text_speech(speech8)
+  enter_to_continue()
+
   print('########################')
   print('#   Let\'s start now!  #')
   print('########################')
