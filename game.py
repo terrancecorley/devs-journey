@@ -328,9 +328,10 @@ def player_move(myAction):
     movement_handler(destination)
 
 def movement_handler(destination):
-  print('\n' + 'You have moved to the ' + destination + '.')
-  myPlayer.location = destination
-  print_location()
+  if destination != '':
+    print('\n' + 'You have moved to the ' + destination + '.')
+    myPlayer.location = destination
+    print_location()
 
 def player_examine(action):
   if zonemap[myPlayer.location][SOLVED]:
@@ -357,7 +358,7 @@ def setup_game():
   for character in question1:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   player_name = input('> ')
   myPlayer.name = player_name
 
@@ -367,11 +368,11 @@ def setup_game():
   for character in question2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   for character in question2_added:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   player_job = input('> ')
   valid_jobs = ['front-end developer', 'back-end developer', 'web designer']
   if player_job.lower() in valid_jobs:
@@ -400,7 +401,7 @@ def setup_game():
   for character in question3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   myPlayer.name = player_name
 
   speech1 = 'Welcome to this fantasy world!\n'
@@ -410,19 +411,19 @@ def setup_game():
   for character in speech1:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   for character in speech2:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   for character in speech3:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.05)
+    time.sleep(0.03)
   for character in speech4:
     sys.stdout.write(character)
     sys.stdout.flush()
-    # time.sleep(0.25)
+    time.sleep(0.2)
   
   os.system('clear')
   print('########################')
