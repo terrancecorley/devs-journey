@@ -15,9 +15,6 @@ class player:
   def __init__(self):
     self.name = ''
     self.job = ''
-    self.hp = 0
-    self.mp = 0
-    self.status_effects = []
     self.location = 'b2'
     self.game_over = False
 
@@ -59,7 +56,7 @@ def help_menu():
   print('###############################')
   print('- Use commands up, down, left, right to move.')
   print('- Type your commands to execute them.')
-  print('- Use command "look" to inspect something.')
+  print('- Use command "knock" to inspect the doors.')
   print('- Good luck and have fun!')
   title_screen_selections()
 
@@ -191,12 +188,15 @@ def print_location():
   print('# ' + zonemap[myPlayer.location][DESCRIPTION] + ' #')
   print('\n' + ('#' * (4 + len(myPlayer.location))))
 
+def new_line():
+  print('\n')
+
 
 def prompt():
   print('\n' + '============================')
   print('What would you like to do?')
   action = input('> ')
-  acceptable_actions = [ 'move', 'go', 'travel', 'walk', 'examine', 'inspect', 'interact', 'look', 'quit', 'exit', 'list', 'options'
+  acceptable_actions = [ 'move', 'go', 'travel', 'walk', 'examine', 'inspect', 'interact', 'knock', 'quit', 'exit', 'list', 'options'
   ]
   while action.lower() not in acceptable_actions:
     print('Unknown action, type "list" to see available actions.\n')
@@ -205,7 +205,7 @@ def prompt():
     sys.exit()
   elif action.lower() in ['move', 'go', 'travel', 'walk']:
     player_move(action.lower())
-  elif action.lower() in ['examine', 'inspect', 'interact', 'look']:
+  elif action.lower() in ['examine', 'inspect', 'interact', 'knock']:
     player_examine(action.lower())
   elif action.lower() in ['list', 'options']:
     player_options(action.lower())
@@ -305,6 +305,7 @@ def setup_game():
   #### INTRODUCTION #### 
   myPlayer.name = player_name
 
+  title1 = '#### Noogle HQ Lobby ####\n'
   speech1 = 'HR Lady: Welcome ' + player_name + '!\n'
   speech2 = 'We are really excited to have you interview with us today at Noogle!\n'
   speech3 = 'So just to recap, you will be having 8 interviews today and they will all be taking place on the 11th floor.\n'
@@ -316,12 +317,15 @@ def setup_game():
   
 
   os.system('clear')
+  text_speech(title1)
+  new_line()
   text_speech(speech1)
   text_speech(speech2)
   text_speech(speech3)
   text_speech(speech4)
   enter_to_continue()
   text_speech(speech5)
+  new_line()
   text_speech(speech6)
   text_speech(speech7)
   text_speech(speech8)
